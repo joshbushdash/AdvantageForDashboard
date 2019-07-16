@@ -50,10 +50,12 @@ namespace Advantage.API
                 app.UseHsts();
             }
 
-            seed.SeedData(5, 20);
+            //seed.SeedData(5, 20);
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute(
+                "default", "api/{controller}/{action}/{id?}"
+            ));
         }
     }
 }
